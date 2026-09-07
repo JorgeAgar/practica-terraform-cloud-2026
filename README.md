@@ -1,0 +1,1 @@
+# practica-terraform-cloud-2026
