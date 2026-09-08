@@ -31,6 +31,11 @@ resource "google_compute_firewall" "permitir_http" {
   target_tags   = ["servidor-web"]
 }
 
+resource "google_compute_address" "ip_estatica" {
+  name   = "ip-estatica"
+  region = "us-central1"
+}
+
 resource "google_compute_instance" "web" {
   name         = "web-tf"
   machine_type = var.tipo_maquina
@@ -46,7 +51,9 @@ resource "google_compute_instance" "web" {
 
   network_interface {
     network = "default"
-    access_config {}
+    access_config {
+        nat_ip = google_compute_address.ip_estatica.address
+    }
   }
 
   metadata_startup_script = file("arranque.sh")
