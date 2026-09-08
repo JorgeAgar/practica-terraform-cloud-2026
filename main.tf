@@ -7,8 +7,8 @@ terraform {
   }
 
   backend "gcs" {
-  bucket = "tfstate-project-56eb9056-3ab4-4adb-b64"
-  prefix = "practica-2"
+    bucket = "tfstate-project-56eb9056-3ab4-4adb-b64"
+    prefix = "practica-2"
   }
 }
 
@@ -52,7 +52,7 @@ resource "google_compute_instance" "web" {
   network_interface {
     network = "default"
     access_config {
-        nat_ip = google_compute_address.ip_estatica.address
+      nat_ip = google_compute_address.ip_estatica.address
     }
   }
 
